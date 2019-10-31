@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cascades-fbp/cascades/graph"
-	"github.com/cascades-fbp/cascades/library"
 	"github.com/codegangsta/cli"
+	"github.com/sibeshkar/maya-engine/graph"
+	"github.com/sibeshkar/maya-engine/library"
 )
 
 // Print catalog command

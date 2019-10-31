@@ -1,6 +1,6 @@
 package main
 
-import "github.com/cascades-fbp/cascades/library"
+import "github.com/sibeshkar/maya-engine/library"
 
 var registryEntry = &library.Entry{
 	Description: `Matches a URI and method from incoming JSON requests from http/server and forwards it either

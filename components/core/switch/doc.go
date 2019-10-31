@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cascades-fbp/cascades/library"
+	"github.com/sibeshkar/maya-engine/library"
 )
 
 var registryEntry = &library.Entry{

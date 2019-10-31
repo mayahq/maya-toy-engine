@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cascades-fbp/cascades/graph"
-	"github.com/cascades-fbp/cascades/library"
-	"github.com/cascades-fbp/cascades/log"
+	"github.com/sibeshkar/maya-engine/graph"
+	"github.com/sibeshkar/maya-engine/library"
+	"github.com/sibeshkar/maya-engine/log"
 	zmq "github.com/pebbe/zmq4"
 )
 
@@ -235,7 +235,7 @@ func (r *Runtime) prepareProcesses() error {
 		}
 	}
 
-	// Solves: https://github.com/cascades-fbp/cascades/issues/17
+	// Solves: https://github.com/sibeshkar/maya-engine/issues/17
 	keys := make([]string, len(sockets))
 	i := 0
 	for k := range sockets {

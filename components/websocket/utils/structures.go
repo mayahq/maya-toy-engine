@@ -3,7 +3,7 @@ package utils
 import (
 	"encoding/json"
 
-	"github.com/cascades-fbp/cascades/runtime"
+	"github.com/sibeshkar/maya-engine/runtime"
 )
 
 // Message encapsulates connection ID it received from or to be sent to

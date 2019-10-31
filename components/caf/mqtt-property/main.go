@@ -15,8 +15,8 @@ import (
 	mqtt "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
 	caf "github.com/cascades-fbp/cascades-caf"
 	helper "github.com/cascades-fbp/cascades-mqtt/lib"
-	"github.com/cascades-fbp/cascades/components/utils"
-	"github.com/cascades-fbp/cascades/runtime"
+	"github.com/sibeshkar/maya-engine/components/utils"
+	"github.com/sibeshkar/maya-engine/runtime"
 	zmq "github.com/pebbe/zmq4"
 )
 

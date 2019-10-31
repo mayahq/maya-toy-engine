@@ -7,10 +7,10 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/cascades-fbp/cascades/library"
-	"github.com/cascades-fbp/cascades/runtime"
 	"github.com/codegangsta/cli"
 	zmq "github.com/pebbe/zmq4"
+	"github.com/sibeshkar/maya-engine/library"
+	"github.com/sibeshkar/maya-engine/runtime"
 )
 
 func run(c *cli.Context) {

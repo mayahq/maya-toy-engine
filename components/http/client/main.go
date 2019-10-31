@@ -15,8 +15,8 @@ import (
 	"time"
 
 	httputils "github.com/cascades-fbp/cascades-http/utils"
-	"github.com/cascades-fbp/cascades/components/utils"
-	"github.com/cascades-fbp/cascades/runtime"
+	"github.com/sibeshkar/maya-engine/components/utils"
+	"github.com/sibeshkar/maya-engine/runtime"
 	zmq "github.com/pebbe/zmq4"
 )
 

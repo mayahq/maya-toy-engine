@@ -5,8 +5,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/cascades-fbp/cascades/server"
 	"github.com/codegangsta/cli"
+	"github.com/sibeshkar/maya-engine/server"
 )
 
 func serve(c *cli.Context) {

@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/cascades-fbp/cascades/components/utils"
+	"github.com/sibeshkar/maya-engine/components/utils"
 	zmq "github.com/pebbe/zmq4"
 )
 

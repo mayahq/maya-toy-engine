@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/cascades-fbp/cascades/runtime"
+	"github.com/sibeshkar/maya-engine/runtime"
 )
 
 // HTTPClientOptions describe options IP for client configuration

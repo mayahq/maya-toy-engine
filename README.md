@@ -13,7 +13,7 @@ Cascades is language-agnostic [dataflow](http://en.wikipedia.org/wiki/Dataflow_p
  * The core components are also written in Go, but you are free to choose any programming language of your choice as long as there are bindings for it (currently it supports: C, C++, C#, CL, Delphi, Erlang, F#, Felix, Haskell, Java, Objective-C, PHP, Python, Lua, Ruby, Ada, Basic, Clojure, Go, Haxe, Node.js, ooc, Perl, and Scala)
  * Supports flows defined using NoFlo's [JSON](http://noflojs.org/documentation/json/) format or FBP [DSL](http://noflojs.org/documentation/fbp/) language.
 
-Please, visit our [Wiki](https://github.com/cascades-fbp/cascades/wiki) for details on how to get started.
+Please, visit our [Wiki](https://github.com/sibeshkar/maya-engine/wiki) for details on how to get started.
 
 ## Usage
 

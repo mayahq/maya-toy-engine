@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/cascades-fbp/cascades/graph"
+	"github.com/sibeshkar/maya-engine/graph"
 )
 
 func loadGraph(graphfile string) (g *graph.Description, err error) {
