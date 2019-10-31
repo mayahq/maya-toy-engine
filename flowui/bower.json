@@ -1,0 +1,16 @@
+{
+  "name": "FlowMaker",
+  "version": "0.0.1",
+  "homepage": "http://cascades-fbp.github.io",
+  "authors": [
+    "Alex Lobunets <alexander.lobunets@gmail.com>"
+  ],
+  "description": "FBP editor created for Cascades FBP-like toolkit",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "jquery-ui": "~1.11.2",
+    "bootstrap": "~3.3.1",
+    "jquery.browser": "~0.0.6"
+  }
+}
