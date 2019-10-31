@@ -1,0 +1,10 @@
+# This example shows how to use group submatch and emit results in JSON format
+
+# Configure matcher with regexp
+'^(?P<dir>.+)/(?P<app>\d+)/(?P<date>[0-9\-]+)/(?P<user>\d+)/(?P<timestamp>\d+)\.zip$' -> PATTERN Matcher(core/submatch)
+
+# Output results to console
+Matcher MAP -> IN Log(core/console)
+
+# Feed the data to matcher
+'/archive/1/2014-09-24/97/1411571771.zip' -> IN Matcher

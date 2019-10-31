@@ -1,0 +1,7 @@
+'Non-existing.txt' -> IN[0] Joiner(core/joiner)
+'examples/sample.txt' -> IN[1] Joiner(core/joiner)
+'examples/sample.txt' -> IN[2] Joiner(core/joiner)
+
+Joiner OUT -> FILE Read(core/readfile)
+Read OUT -> IN OUT(core/console)
+Read ERR -> IN ERR(core/console)

@@ -1,0 +1,66 @@
+
+
+
+#'{
+#    "storage":"memory"
+#}' -> OPTIONS Distinct(core/distinct)
+#'Demo' -> IN Pass(core/passthru) OUT -> IN Distinct OUT -> IN Log(core/console)
+#'Demo' -> IN Distinct
+
+#'1' -> IN Pass1(core/passthru) OUT -> IN[1] Mux(core/joiner)
+#'0' -> IN Pass0(core/passthru) OUT -> IN[0] Mux(core/joiner)
+#'3' -> IN Pass3(core/passthru) OUT -> IN[3] Mux(core/joiner)
+#'2' -> IN Pass2(core/passthru) OUT -> IN[2] Mux(core/joiner)
+#Mux OUT -> IN Log(core/console)
+
+
+#'2s' -> INTERVAL Ticker(core/ticker)
+#Ticker OUT -> IN Forward(core/passthru)
+
+#'1s' -> DELAY Delay(core/delay)
+#Forward OUT -> IN Delay
+
+#Delay OUT -> IN Log(core/console)
+##Delay OUT -> IN Drop(core/drop)
+
+#'ls -1 ~/Downloads | wc -l' -> CMD Exec(core/exec)
+#Exec OUT -> IN ExecOut(core/console)
+#Exec ERR -> IN ExecErr(core/console)
+
+#'2s' -> INTERVAL Source1(core/ticker)
+#'3s' -> INTERVAL Source2(core/ticker)
+#'Simple initialization' -> IN[0] Joiner(core/joiner)
+#Source1 OUT -> IN[1] Joiner
+#Source2 OUT -> IN[2] Joiner
+#Joiner OUT -> IN Log(core/console)
+
+#'Demo 0' -> IN[0] Joiner(core/joiner)
+#'Demo 1' -> IN[1] Joiner(core/joiner)
+#'Demo 2' -> IN[2] Joiner(core/joiner)
+#Joiner OUT -> IN Log(core/console)
+
+#'Demo 0' -> IN[0] Joiner(core/joiner)
+#'test.txt' -> IN[1] Joiner(core/joiner)
+#'test.txt' -> IN[2] Joiner(core/joiner)
+#Joiner OUT -> IN Forward(core/passthru) OUT -> FILE Read(core/readfile)
+#Read OUT -> IN OUT(core/console)
+#Read ERR -> IN ERR(core/console)
+
+#'test.txt' -> IN Splitter(core/splitter)
+#Splitter OUT[0] -> IN Log1(core/console)
+#Splitter OUT[1] -> IN Forward(core/passthru) OUT -> FILE Read(core/readfile)
+#Read OUT -> IN OUT(core/console)
+
+#'5s' -> INTERVAL Ticker(core/ticker) OUT -> GATE Trigger(core/switch) OUT -> IN Log(core/console)
+#'1s' -> INTERVAL Data(core/ticker) OUT -> IN Trigger
+
+#'{"name":"my_series","columns":["value1", "value2", "value2"],"points":[[{{.value1}},"{{.value2}}",{{.value3}}]]}' ->  TPL Template(core/template)
+#'{"value2":"DEMO","value3":false}' -> IN Template OUT -> IN Log(core/console)
+
+#'/Users/alex/Projects/OpenSource/Cascades' -> DIR Walk(fs/walk)
+#Walk FILE -> IN OUT(core/console)
+#Walk ERR -> IN ERR(core/console)
+
+#'/Users/alex/Projects/OpenSource/Cascades/tmp' -> DIR Monitor(fs/watchdog)
+#Monitor CREATED -> IN Created(core/console)
+#Monitor ERR -> IN ERR(core/console)

@@ -1,0 +1,164 @@
+{
+   "name": "Local Components Library",
+   "entries": {
+      "core/console": {
+         "name": "core/console",
+         "description": "Simple logging component that writes everything received on the input port to standard output stream.",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/core/console",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for logging IP",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": []
+      },
+      "core/passthru": {
+         "name": "core/passthru",
+         "description": "Forwards received IP to the output without any modifications",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/core/passthru",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port for sending IPs",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "core/splitter": {
+         "name": "core/splitter",
+         "description": "Copies received IP and sends a copy to each connected out port",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/core/splitter",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output array port",
+               "required": true,
+               "addressable": true
+            }
+         ]
+      },
+      "core/switch": {
+         "name": "core/switch",
+         "description": "Receives IP on the IN port and passes it to OUT only when GATE port receives an IP",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/core/switch",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Data port",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "gate",
+               "type": "all",
+               "description": "Gate port to pass IP from data port to the output",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "core/ticker": {
+         "name": "core/ticker",
+         "description": "Sends ticks (current unix timestamps) at predefined intervals to the output channel",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/core/ticker",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "interval",
+               "type": "duration",
+               "description": "Configures the ticker. Accepts durations in the format: 3s, 10m, etc",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "timestamp",
+               "description": "Output port for sending ticks (timestamps)",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "http/client": {
+         "name": "http/client",
+         "description": "Multi-purpose HTTP client component",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/cascades/components_new/http/client",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "req",
+               "type": "json",
+               "description": "JSON object describing the HTTP request",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "resp",
+               "type": "json",
+               "description": "Response JSON object defined in utils of HTTP components library",
+               "required": false,
+               "addressable": false
+            },
+            {
+               "name": "body",
+               "type": "string",
+               "description": "Body of the response",
+               "required": false,
+               "addressable": false
+            },
+            {
+               "name": "err",
+               "type": "string",
+               "description": "Error port for errors while performing requests",
+               "required": false,
+               "addressable": false
+            }
+         ]
+      }
+   },
+   "created": "2019-10-31T21:32:41.383431+05:30",
+   "updated": "2019-10-31T22:21:39.757495+05:30"
+}

@@ -1,0 +1,11 @@
+#
+# This examples shows how to use a delay component
+#
+
+'2s' -> INTERVAL Ticker(core/ticker)
+'1s' -> DELAY Delay(core/delay)
+
+Ticker OUT -> IN Forward(core/passthru)
+Forward OUT -> IN Delay
+
+Delay OUT -> IN Log(core/console)

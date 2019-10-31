@@ -1,0 +1,18 @@
+#
+# This example shows how to subscribe to MQTT topic and publish received
+# data to an InfluxDB
+#
+
+# Configure MQTT subscriber
+'tcp://127.0.0.1:1883/sensors/%23' -> OPTIONS Provider(mqtt/sub) ERR -> IN Errors(core/console)
+
+# Configure InfluxDB connection
+'host=127.0.0.1:8086,user=root,pass=r00t,db=demo' -> OPTIONS Database(influxdb/write)
+
+# Configure DB entry formatter
+'{"name":"my_series","columns":["value1", "value2", "value3"],"points":[[{{.value1}},"{{.value2}}",{{.value3}}]]}' ->  TPL DataTemplate(core/template)
+
+# Pipe data from MQTT to InfluxDB through formatter
+Provider OUT -> IN DataTemplate OUT -> IN Copy(core/splitter)
+Copy OUT[0] -> IN JSON(core/console)
+Copy OUT[1] -> IN Database

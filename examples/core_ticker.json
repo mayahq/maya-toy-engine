@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "name": "Send tick via passthrough to the console"
+  },
+  "processes": {
+    "Time Ticker": {
+      "component": "core/ticker"
+    },
+    "IP Forwarder": {
+      "component": "core/passthru"
+    },
+    "IP Logger": {
+      "component": "core/console"
+    }
+  },
+  "connections": [
+    {
+      "data": "2s",
+      "tgt": {
+        "process": "Time Ticker",
+        "port": "INTERVAL"
+      }
+    },
+    {
+      "src": {
+        "process": "Time Ticker",
+        "port": "OUT"
+      },
+      "tgt": {
+        "process": "IP Forwarder",
+        "port": "IN"
+      }
+    },
+    {
+      "src": {
+        "process": "IP Forwarder",
+        "port": "OUT"
+      },
+      "tgt": {
+        "process": "IP Logger",
+        "port": "IN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+'3s' -> INTERVAL Ticker(core/ticker)
+Ticker OUT -> IN JSPass(js/passthru)
+JSPass OUT -> IN PyPass(python/passthru)
+PyPass OUT -> IN Log(core/console)

@@ -1,0 +1,18 @@
+# Control signal every 5s
+'5s' -> INTERVAL Ticker(core/ticker)
+Ticker OUT -> GATE Trigger(core/switch)
+
+# Content for the trigger
+'{
+    "method":"GET",
+    "url":"http://dummy.restapiexample.com/api/v1/employees"
+}' -> IN Trigger
+Trigger OUT -> IN Splitter(core/splitter)
+
+# Feedback loop (so trigger send URL again)
+Splitter OUT[0] -> IN Trigger
+
+# Send URL to HTTP client and log the body
+Splitter OUT[1] -> REQ HttpClient(http/client) BODY -> IN Log(core/console)
+#Splitter OUT[1] -> IN Log(core/console)
+

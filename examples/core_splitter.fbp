@@ -1,0 +1,5 @@
+
+'examples/sample.txt' -> IN Splitter(core/splitter)
+Splitter OUT[0] -> IN Log1(core/console)
+Splitter OUT[1] -> IN Forward1(core/passthru) OUT -> IN Log2(core/console)
+Splitter OUT[2] -> IN Forward2(core/passthru) OUT -> IN Log3(core/console)

@@ -1,0 +1,7 @@
+#
+# A simple ticking network written in NoFlo's FBP DSL.
+# See tick.json to see the same flow written in NoFlo's JSON
+#
+
+'3s' -> INTERVAL Ticker(core/ticker) OUT -> IN Forward(core/passthru)
+Forward OUT -> IN Log(core/console)

@@ -1,0 +1,6 @@
+'{
+    "method":"GET",
+    "url":"http://dummy.restapiexample.com/api/v1/employees"
+}' -> REQ HttpClient(http/client)
+HttpClient RESP -> IN Response(core/console)
+HttpClient BODY -> IN Body(core/console)

@@ -1,0 +1,2 @@
+'2s' -> INTERVAL Ticker(core/ticker) OUT -> IN Forward(debug/crasher)
+Forward OUT -> IN Log(core/console)

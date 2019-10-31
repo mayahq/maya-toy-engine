@@ -1,0 +1,6 @@
+#
+# Pretty useless Drop component. Just a demo.
+#
+
+'1s' -> INTERVAL Ticker(core/ticker) OUT -> IN Forward(core/passthru)
+Forward OUT -> IN Drop(core/drop)

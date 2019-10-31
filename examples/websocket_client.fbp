@@ -1,0 +1,5 @@
+'ws://echo.websocket.org:80' -> OPTIONS Client(websocket/client)
+Client OUT -> IN Log(core/console)
+
+'3s' -> INTERVAL Ticker(core/ticker)
+Ticker OUT -> IN Client

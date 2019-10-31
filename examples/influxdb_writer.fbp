@@ -1,0 +1,7 @@
+'host=127.0.0.1:8086,user=root,password=root,db=demo' -> OPTIONS IDBW(influxdb/write)
+
+'{"name":"tests","columns":["id","name","value"],"points":[[1,"Alex",true]]}' -> IN IDBW
+'{"name":"tests","columns":["id","name","value"],"points":[[2,"Bob",false]]}' -> IN IDBW
+'{"name":"tests","columns":["id","name","value"],"points":[[3,"Dick",true]]}' -> IN IDBW
+
+IDBW ERR -> IN Errors(core/console)

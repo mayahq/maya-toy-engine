@@ -1,0 +1,6 @@
+'1' -> IN Pass1(core/passthru) OUT -> IN[1] Mux(core/joiner)
+'0' -> IN Pass0(core/passthru) OUT -> IN[0] Mux(core/joiner)
+'3' -> IN Pass3(core/passthru) OUT -> IN[3] Mux(core/joiner)
+'2' -> IN Pass2(core/passthru) OUT -> IN[2] Mux(core/joiner)
+Mux OUT -> IN Log(core/console)
+

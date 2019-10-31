@@ -1,0 +1,8 @@
+# TCP Echo Server
+'localhost:9999' -> OPTIONS Server(sockets/tcp-server) OUT -> IN Copy(core/splitter)
+
+# Log incoming message
+Copy OUT[0] -> IN Log(core/console)
+
+# Loop back to server
+Copy OUT[1] -> IN Server

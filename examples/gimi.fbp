@@ -1,0 +1,44 @@
+#
+# Setup back loop for periodic directory walking
+#
+'/Users/alex/Projects/FIT/M-Commerce/LiveBackup' -> IN DirName(core/splitter)
+DirName OUT[0] -> DIR Walk(fs/walk) ERR -> IN FSErrors(core/console)
+DirName OUT[1] -> DIR Watchdog(fs/watchdog) ERR -> IN FSErrors
+
+# Configure the cache
+'{
+    "duration":0,
+    "cleanup":0,
+    "file":"distinct.cache"
+}' -> OPTIONS Distinct(core/distinct)
+Walk FILE -> IN Distinct
+Watchdog CREATED -> IN Distinct
+
+Distinct OUT -> IN Log(core/console)
+
+# Configure the app/user extractor
+#'^(?P<dir>.+)/(?P<app>\d+)/(?P<date>[0-9\-]+)/(?P<user>\d+)/(?P<timestamp>\d+)\.zip$' -> PATTERN Matcher(core/submatch)
+#Distinct OUT -> IN Matcher
+#Matcher MAP -> IN Log(core/console)
+
+#
+# Read file line by line
+#
+#CacheFile CACHED -> FILE ReadLog(core/readfile) ERR -> IN FSErrors
+#ReadLog OUT -> IN LinesSplit(core/splitter)
+#
+# Calculate points and update scores in db
+#
+# MySQL UPSERT template:
+#'/bin/echo "INSERT INTO gamification_leaderboardentry (application_id, user_id, points, updated) VALUES ({{.appId}}, {{.userId}}, {{.points}}, now()) ON DUPLICATE KEY UPDATE points = points + {{.points}}, updated=now();" | /usr/bin/mysql -h sql.fit.fraunhofer.de -u gimi_live --password="G1m2./klp.S+tfG" gimi_live' -> TPL UpsertQueryCmd(core/template)
+#LinesSplit OUT[0] -> IN PointsCalc(gimi/calculate-points) ERR -> IN LogicErrors(core/console)
+#FetchRules BODY -> RULES PointsCalc
+#PointsCalc OUT -> IN UpsertQueryCmd OUT -> CMD CommandRunner(core/exec) ERR -> IN LogicErrors
+#CommandRunner OUT -> IN Debug(core/console)
+#PointsCalc OUT -> IN Debug
+
+#
+# Add events to InfluxDB for monitoring purposes
+#
+#'host=gimi.fit.fraunhofer.de:8086,user=cascades,pass=cascades,db=gimi-live' -> OPTIONS InfluxDB(gimi/influx-write) ERR -> IN DataErrors(core/console)
+#LinesSplit OUT[1] -> IN InfluxDB

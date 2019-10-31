@@ -1,0 +1,4 @@
+'127.0.0.1:8000' -> OPTIONS Server(websocket/server)
+Server OUT -> IN Demux(core/splitter)
+Demux OUT[0] -> IN Log(core/console)
+Demux OUT[1] -> IN Server

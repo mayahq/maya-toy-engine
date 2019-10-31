@@ -1,0 +1,7 @@
+#
+# Execute a given command and forward its output and errors to other components.
+#
+
+'ls -1 ~/Downloads | wc -l' -> CMD Exec(core/exec)
+Exec OUT -> IN Output(core/console)
+Exec ERR -> IN Errors(core/console)

@@ -1,0 +1,10 @@
+# Example with 2 independent sub networks:
+# - flow 1 registers a service
+# - flow 2 looks it up
+
+# Flow 1: registration
+'{"name":"Cascades service", "type":"_foobar._tcp", "port":11222}' -> OPTIONS Register(bonjour/register)
+
+# Flow 2: lookup
+'{"type":"_foobar._tcp"}' -> OPTIONS Discover(bonjour/discover)
+Discover OUT -> IN Console(core/console)

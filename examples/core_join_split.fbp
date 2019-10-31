@@ -1,0 +1,13 @@
+'2s' -> INTERVAL Source1(core/ticker)
+'4s' -> INTERVAL Source2(core/ticker)
+'6s' -> INTERVAL Source3(core/ticker)
+
+'Simple initialization' -> IN[0] Joiner(core/joiner)
+Source1 OUT -> IN[1] Joiner
+Source2 OUT -> IN[2] Joiner
+Source3 OUT -> IN[3] Joiner
+
+Joiner OUT -> IN Splitter(core/splitter)
+Splitter OUT[0] -> IN Pass1(core/passthru) OUT -> IN Log1(core/console)
+Splitter OUT[1] -> IN Log2(core/console)
+Splitter OUT[2] -> IN Log3(core/console)
