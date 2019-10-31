@@ -4,7 +4,7 @@
       "core/console": {
          "name": "core/console",
          "description": "Simple logging component that writes everything received on the input port to standard output stream.",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/core/console",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/console",
          "elementary": true,
          "inports": [
             {
@@ -20,7 +20,7 @@
       "core/passthru": {
          "name": "core/passthru",
          "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/core/passthru",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/passthru",
          "elementary": true,
          "inports": [
             {
@@ -44,7 +44,7 @@
       "core/splitter": {
          "name": "core/splitter",
          "description": "Copies received IP and sends a copy to each connected out port",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/core/splitter",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/splitter",
          "elementary": true,
          "inports": [
             {
@@ -68,7 +68,7 @@
       "core/switch": {
          "name": "core/switch",
          "description": "Receives IP on the IN port and passes it to OUT only when GATE port receives an IP",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/core/switch",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/switch",
          "elementary": true,
          "inports": [
             {
@@ -99,7 +99,7 @@
       "core/ticker": {
          "name": "core/ticker",
          "description": "Sends ticks (current unix timestamps) at predefined intervals to the output channel",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/core/ticker",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/ticker",
          "elementary": true,
          "inports": [
             {
@@ -123,7 +123,7 @@
       "http/client": {
          "name": "http/client",
          "description": "Multi-purpose HTTP client component",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_new/http/client",
+         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/http/client",
          "elementary": true,
          "inports": [
             {
@@ -159,6 +159,6 @@
          ]
       }
    },
-   "created": "2019-10-31T22:41:50.852039+05:30",
-   "updated": "2019-10-31T22:41:50.928659+05:30"
+   "created": "2019-10-31T22:58:44.101091+05:30",
+   "updated": "2019-10-31T22:58:44.338276+05:30"
 }
