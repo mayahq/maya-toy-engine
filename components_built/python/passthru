@@ -54,8 +54,6 @@ def main():
 
         parts = in_port.recv_multipart()
 
-       
-
         if args.debug:
             sys.stdout.write("IN Port: Received: %r" % parts)
             sys.stdout.flush()

@@ -54,7 +54,12 @@ go build -o components_built/maya/click github.com/sibeshkar/maya-engine/compone
 Building the binary: 
 ```
 go build ./cmd/cascades
+```
 
+## Run FBP file
+
+```
+./cascades --debug run ./examples/polyglot2.fbp
 ```
 
 ## License
