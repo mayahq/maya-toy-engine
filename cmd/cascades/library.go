@@ -231,6 +231,7 @@ func addFileToLibrary(c *cli.Context, r library.Registrar, file string, name str
 		// adding an elementary component
 		c := exec.Command(file, "--json")
 		out, err := c.Output()
+
 		if err != nil {
 			return fmt.Errorf("Cannot register component %s: %s\n", name, err.Error())
 		}

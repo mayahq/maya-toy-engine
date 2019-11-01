@@ -10,9 +10,9 @@ import (
 	"syscall"
 	"time"
 
+	zmq "github.com/pebbe/zmq4"
 	"github.com/sibeshkar/maya-engine/components/utils"
 	"github.com/sibeshkar/maya-engine/runtime"
-	zmq "github.com/pebbe/zmq4"
 )
 
 var (

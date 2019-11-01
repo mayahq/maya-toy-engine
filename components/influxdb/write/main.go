@@ -12,10 +12,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sibeshkar/maya-engine/components/utils"
-	"github.com/sibeshkar/maya-engine/runtime"
 	influxdb "github.com/influxdb/influxdb/client"
 	zmq "github.com/pebbe/zmq4"
+	"github.com/sibeshkar/maya-engine/components/utils"
+	"github.com/sibeshkar/maya-engine/runtime"
 )
 
 var (

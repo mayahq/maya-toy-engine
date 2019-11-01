@@ -1,0 +1,2 @@
+'3s' -> INTERVAL Ticker(core/ticker) OUT -> IN Click(maya/click)
+Click OUT -> IN Log(core/console)

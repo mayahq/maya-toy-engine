@@ -41,13 +41,21 @@ GLOBAL OPTIONS:
    --version, -v     print the version
 ```
 
+## Adding new components
 
-## Authors
+Building new components
+```
+go build -o components_built/maya/click github.com/sibeshkar/maya-engine/components/maya/click
+./cascades library add ./components_built/
+```
 
-- [Oleksandr Lobunets](https://github.com/oleksandr)
-- [Alexandr Krylovskiy](https://github.com/krylovsk)
-- Plus many more wonderful contributors!
+## Building Binary
 
+Building the binary: 
+```
+go build ./cmd/cascades
+
+```
 
 ## License
 
