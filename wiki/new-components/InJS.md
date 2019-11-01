@@ -60,10 +60,10 @@ if (opts.json) {
 ### Step 3: Create input & output ports
 
 The actual endpoint for the port is passed via CLI flag. In our case the _Runtime_ uses `-port.in` flag to pass a TCP endpoint (e.g. `tcp://127.0.0.1:5000`). Input ports are sockets of type `pull` and you should call their`bindSync` method (these ports are passive and wait for connections).
-The output port is created similar to the input port but with different type `push` as it used to send (push) data to it. You also need to call `connect` method of this port instead of `bindSync`.
+The output port is created similar to the input port but with different type `push` as it used to send (push) data to it. You also need to call `connect` method of this port instead of `bindSync`. Make sure you install zmq using `npm install zeromq`
 
 ```
-var zmq  = require('zmq')
+var zmq  = require('zeromq')
   , receiver = zmq.socket('pull')
   , sender = zmq.socket('push');
  
@@ -135,7 +135,7 @@ if (opts['port.in'] == undefined || opts['port.out'] == undefined) {
 }
 
 // Create zmq sockets & run the main loop
-var zmq  = require('zmq')
+var zmq  = require('zeromq')
   , receiver = zmq.socket('pull')
   , sender = zmq.socket('push');
 
