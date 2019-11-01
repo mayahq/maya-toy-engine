@@ -48,7 +48,6 @@ Building new components
 go build -o components_built/maya/click github.com/sibeshkar/maya-engine/components/maya/click
 ./cascades library add ./components_built/
 ```
-
 ## Building Binary
 
 Building the binary: 

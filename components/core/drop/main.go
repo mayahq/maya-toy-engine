@@ -10,8 +10,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sibeshkar/maya-engine/components/utils"
 	zmq "github.com/pebbe/zmq4"
+	"github.com/sibeshkar/maya-engine/components/utils"
 )
 
 var (
@@ -90,7 +90,6 @@ func mainLoop() {
 		exitCh <- syscall.SIGTERM
 		return
 	}
-
 	log.Println("Started...")
 	for {
 		inPort.RecvMessageBytes(0)
