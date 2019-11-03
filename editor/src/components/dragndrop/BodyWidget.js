@@ -72,6 +72,7 @@ const JsonToFBP = model => {
       for (var key in item.models) {
         if (item.models.hasOwnProperty(key)) {
           var val = item.models[key];
+
           var src = {
             process: val.source,
             port: ports[val.sourcePort].label
@@ -92,6 +93,21 @@ const JsonToFBP = model => {
   };
 
   return newArray;
+};
+
+const GenerateNode = data => {
+  var node = new DefaultNodeModel(data.name, "rgb(192,255,0)");
+  if (data.name === "data") {
+    node.addOutPort("out");
+  }
+  _.forEach(data.outports, port => {
+    node.addOutPort(port.name);
+  });
+  _.forEach(data.inports, port => {
+    node.addInPort(port.name);
+  });
+
+  return node;
 };
 
 export class BodyWidget extends React.Component {
@@ -136,21 +152,24 @@ export class BodyWidget extends React.Component {
           </Button>
         </Header>
         <Content>
-          <TrayWidget>{children}</TrayWidget>
+          <TrayWidget>
+            <TrayItemWidget
+              model={{
+                type: "out",
+                name: "data"
+              }}
+              name="datanode"
+              color="rgb(0,192,255)"
+            />
+            {children}
+          </TrayWidget>
           <Layer
             onDrop={event => {
               var data = JSON.parse(
                 event.dataTransfer.getData("storm-diagram-node")
               );
 
-              var node = null;
-              node = new DefaultNodeModel(data.name, "rgb(192,255,0)");
-              _.forEach(data.outports, port => {
-                node.addOutPort(port.name);
-              });
-              _.forEach(data.inports, port => {
-                node.addInPort(port.name);
-              });
+              let node = GenerateNode(data);
 
               var point = this.props.app
                 .getDiagramEngine()

@@ -91,6 +91,8 @@ receiver.on('message', function() {
 
 ## Complete example of a Passthru component
 
+Make sure you run `chmod a+x ./passthru` so that it becomes executable before add to component library.
+
 ```
 #!/usr/bin/env node
 
