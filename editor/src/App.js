@@ -1,5 +1,5 @@
 import React from "react";
-import { Editor } from "./components/Editor";
+import EditorDemo from "./components/dragndrop/index";
 import { theme, ThemeProvider } from "@chakra-ui/core";
 
 import "./App.css";
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={customTheme}>
-        <Editor />
+        <EditorDemo />
       </ThemeProvider>
     </div>
   );
