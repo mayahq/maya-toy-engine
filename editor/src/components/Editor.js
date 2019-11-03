@@ -78,7 +78,7 @@ export const Editor = () => {
 
   // node 3
   const node3 = new JSCustomNodeModel({
-    name: "core/exec",
+    name: "core/log",
     color: "rgb(0,192,255)"
   });
   node3.setPosition(300, 200);

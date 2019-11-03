@@ -5,6 +5,7 @@ import { TrayItemWidget } from "./TrayItemWidget";
 import { DefaultNodeModel } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import { DemoCanvasWidget } from "./DemoCanvasWidget";
+import { IIPCustomNodeModel } from "./IIP/IIPNodeModel";
 import { Button } from "@chakra-ui/core";
 import library from "./library.json";
 import styled from "@emotion/styled";
@@ -64,7 +65,7 @@ const JsonToFBP = model => {
             ports[item.id] = item;
           });
           processes[val.id] = val;
-          if (val.name !== "data") {
+          if (val.name !== "core/iip") {
             processesObj[val.id] = { component: val.name };
           }
         }
@@ -72,23 +73,25 @@ const JsonToFBP = model => {
     }
   });
   _.forEach(model.layers, item => {
+    console.log("Layers", model.layers);
     if (item.type === "diagram-links") {
       for (var key in item.models) {
         if (item.models.hasOwnProperty(key)) {
           var val = item.models[key];
-          if (processes[val.source].name !== "data") {
+          let tgt;
+          if (processes[val.source].name !== "core/iip") {
             var src = {
               process: val.source,
               port: ports[val.sourcePort].label
             };
-            var tgt = {
+            tgt = {
               process: val.target,
               port: ports[val.targetPort].label
             };
             connectionsObj.push({ src: src, tgt: tgt });
-          } else if (processes[val.source].name === "data") {
-            var data = "2s";
-            var tgt = {
+          } else if (processes[val.source].name === "core/iip") {
+            var data = { packet: "2s" };
+            tgt = {
               process: val.target,
               port: ports[val.targetPort].label
             };
@@ -108,16 +111,19 @@ const JsonToFBP = model => {
 };
 
 const GenerateNode = data => {
-  var node = new DefaultNodeModel(data.name, "rgb(192,255,0)");
-  if (data.name === "data") {
+  var node = null;
+  if (data.name === "core/iip") {
+    node = new IIPCustomNodeModel(data.name, "rgb(192,0,0)");
     node.addOutPort("out");
+  } else {
+    node = new DefaultNodeModel(data.name, "rgb(192,255,0)");
+    _.forEach(data.outports, port => {
+      node.addOutPort(port.name);
+    });
+    _.forEach(data.inports, port => {
+      node.addInPort(port.name);
+    });
   }
-  _.forEach(data.outports, port => {
-    node.addOutPort(port.name);
-  });
-  _.forEach(data.inports, port => {
-    node.addInPort(port.name);
-  });
 
   return node;
 };
@@ -129,7 +135,6 @@ export class BodyWidget extends React.Component {
         <TrayItemWidget
           key={i}
           model={{
-            type: "out",
             name: entry.name,
             inports: entry.inports,
             outports: entry.outports
@@ -167,10 +172,9 @@ export class BodyWidget extends React.Component {
           <TrayWidget>
             <TrayItemWidget
               model={{
-                type: "out",
-                name: "data"
+                name: "core/iip"
               }}
-              name="datanode"
+              name="core/iip"
               color="rgb(0,192,255)"
             />
             {children}

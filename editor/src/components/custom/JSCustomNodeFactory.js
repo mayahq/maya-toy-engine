@@ -9,10 +9,12 @@ export class JSCustomNodeFactory extends AbstractReactFactory {
   }
 
   generateModel(event) {
+    console.log("Generating model", event);
     return new JSCustomNodeModel();
   }
 
   generateReactWidget(event) {
+    console.log("Generating widget", event);
     return <JSCustomNodeWidget engine={this.engine} node={event.model} />;
   }
 }

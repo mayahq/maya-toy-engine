@@ -1,5 +1,6 @@
 import React from "react";
 import EditorDemo from "./components/dragndrop/index";
+import { Editor } from "./components/Editor";
 import { theme, ThemeProvider } from "@chakra-ui/core";
 
 import "./App.css";
