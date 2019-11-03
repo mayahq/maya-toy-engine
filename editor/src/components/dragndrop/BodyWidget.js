@@ -53,6 +53,7 @@ const JsonToFBP = model => {
   var processesObj = {};
   var connectionsObj = [];
   var ports = {};
+  var processes = {};
   _.forEach(model.layers, item => {
     if (item.type === "diagram-nodes") {
       for (var key in item.models) {
@@ -62,7 +63,10 @@ const JsonToFBP = model => {
           _.forEach(val.ports, item => {
             ports[item.id] = item;
           });
-          processesObj[val.id] = { component: val.name };
+          processes[val.id] = val;
+          if (val.name !== "data") {
+            processesObj[val.id] = { component: val.name };
+          }
         }
       }
     }
@@ -72,16 +76,24 @@ const JsonToFBP = model => {
       for (var key in item.models) {
         if (item.models.hasOwnProperty(key)) {
           var val = item.models[key];
-
-          var src = {
-            process: val.source,
-            port: ports[val.sourcePort].label
-          };
-          var tgt = {
-            process: val.target,
-            port: ports[val.targetPort].label
-          };
-          connectionsObj.push({ src: src, tgt: tgt });
+          if (processes[val.source].name !== "data") {
+            var src = {
+              process: val.source,
+              port: ports[val.sourcePort].label
+            };
+            var tgt = {
+              process: val.target,
+              port: ports[val.targetPort].label
+            };
+            connectionsObj.push({ src: src, tgt: tgt });
+          } else if (processes[val.source].name === "data") {
+            var data = "2s";
+            var tgt = {
+              process: val.target,
+              port: ports[val.targetPort].label
+            };
+            connectionsObj.push({ data: data, tgt: tgt });
+          }
         }
       }
     }
