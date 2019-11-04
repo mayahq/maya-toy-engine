@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PortWidget, DefaultPortLabel } from "@projectstorm/react-diagrams";
+import { DefaultPortLabel } from "@projectstorm/react-diagrams";
 import styled from "@emotion/styled";
 import * as _ from "lodash";
 import "./node.css";
@@ -65,6 +65,7 @@ export class IIPCustomNodeWidget extends React.Component {
         <Title>
           <TitleName>{this.props.node.getOptions().name}</TitleName>
         </Title>
+
         <Ports>
           <PortsContainer>
             {_.map(this.props.node.getInPorts(), this.generatePort)}

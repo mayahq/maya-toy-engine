@@ -1,7 +1,7 @@
 import * as SRD from "@projectstorm/react-diagrams";
 import createEngine from "@projectstorm/react-diagrams";
+import { InputType } from "@projectstorm/react-canvas-core";
 import { IIPCustomNodeFactory } from "./IIP/IIPNodeFactory";
-import { IIPCustomNodeModel } from "./IIP/IIPNodeModel";
 
 export class Application {
   constructor() {
@@ -18,6 +18,12 @@ export class Application {
     this.diagramEngine
       .getNodeFactories()
       .registerFactory(new IIPCustomNodeFactory());
+
+    // Disable delete action
+    // const actions = this.diagramEngine
+    //   .getActionEventBus()
+    //   .getActionsForType(InputType.KEY_DOWN);
+    // this.diagramEngine.getActionEventBus().deregisterAction(actions[0]);
 
     //3-A) create a default node
     var node1 = new SRD.DefaultNodeModel("Node 1", "rgb(0,192,255)");
