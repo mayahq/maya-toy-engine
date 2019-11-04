@@ -1,6 +1,6 @@
 import * as SRD from "@projectstorm/react-diagrams";
 import createEngine from "@projectstorm/react-diagrams";
-import { InputType } from "@projectstorm/react-canvas-core";
+// import { InputType } from "@projectstorm/react-canvas-core";
 import { IIPCustomNodeFactory } from "./IIP/IIPNodeFactory";
 
 export class Application {
