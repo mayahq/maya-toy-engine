@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PortWidget } from "@projectstorm/react-diagrams";
+import { PortWidget, DefaultPortLabel } from "@projectstorm/react-diagrams";
 import styled from "@emotion/styled";
 import * as _ from "lodash";
 import "./node.css";
@@ -17,7 +17,7 @@ export const Node = styled.div`
 
 const Ports = styled.div`
   display: flex;
-  color: red;
+  color: white;
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
 `;
 
@@ -46,6 +46,15 @@ const TitleName = styled.div`
 `;
 
 export class IIPCustomNodeWidget extends React.Component {
+  generatePort = port => {
+    return (
+      <DefaultPortLabel
+        engine={this.props.engine}
+        port={port}
+        key={port.getID()}
+      />
+    );
+  };
   render() {
     return (
       <Node
@@ -56,18 +65,14 @@ export class IIPCustomNodeWidget extends React.Component {
         <Title>
           <TitleName>{this.props.node.getOptions().name}</TitleName>
         </Title>
-        <PortWidget
-          engine={this.props.engine}
-          port={this.props.node.getPort("in")}
-        >
-          <div className="circle-port" />
-        </PortWidget>
-        <PortWidget
-          engine={this.props.engine}
-          port={this.props.node.getPort("out")}
-        >
-          <div className="circle-port" />
-        </PortWidget>
+        <Ports>
+          <PortsContainer>
+            {_.map(this.props.node.getInPorts(), this.generatePort)}
+          </PortsContainer>
+          <PortsContainer>
+            {_.map(this.props.node.getOutPorts(), this.generatePort)}
+          </PortsContainer>
+        </Ports>
       </Node>
     );
   }

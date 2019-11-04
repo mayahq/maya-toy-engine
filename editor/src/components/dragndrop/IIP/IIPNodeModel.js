@@ -1,4 +1,8 @@
-import { DefaultPortModel, NodeModel } from "@projectstorm/react-diagrams";
+import {
+  DefaultPortModel,
+  NodeModel,
+  PortModelAlignment
+} from "@projectstorm/react-diagrams";
 
 /**
  * Example of a custom model using pure javascript
@@ -7,35 +11,80 @@ export class IIPCustomNodeModel extends NodeModel {
   constructor(options = {}) {
     super({
       ...options,
-      type: "js-custom-node"
+      type: "core/iip"
     });
+    this.addInPort = this.addInPort.bind(this);
+    this.addOutPort = this.addOutPort.bind(this);
+    this.getInPorts = this.getInPorts.bind(this);
+    this.getOutPorts = this.getOutPorts.bind(this);
+    this.addPort = this.addPort.bind(this);
     this.color = options.color || { options: "red" };
 
+    this.portsOut = [];
+    this.portsIn = [];
+
     // setup an in and out port
-    this.addPort(
-      new DefaultPortModel({
-        in: true,
-        name: "in"
-      })
-    );
-    this.addPort(
-      new DefaultPortModel({
-        in: false,
-        name: "out"
-      })
-    );
   }
 
   serialize() {
     return {
       ...super.serialize(),
-      color: this.options.color
+      color: this.options.color,
+      data: this.options.data
     };
   }
 
   deserialize(ob, engine) {
     super.deserialize(ob, engine);
     this.color = ob.color;
+  }
+
+  getInPorts() {
+    return this.portsIn;
+  }
+
+  getOutPorts() {
+    return this.portsOut;
+  }
+
+  addPort(port) {
+    super.addPort(port);
+    if (port.getOptions().in) {
+      if (this.portsIn.indexOf(port) === -1) {
+        this.portsIn.push(port);
+      }
+    } else {
+      if (this.portsOut.indexOf(port) === -1) {
+        this.portsOut.push(port);
+      }
+    }
+    return port;
+  }
+
+  addInPort(label, after = true) {
+    const p = new DefaultPortModel({
+      in: true,
+      name: label,
+      label: label,
+      alignment: PortModelAlignment.LEFT
+    });
+    if (!after) {
+      this.portsIn.splice(0, 0, p);
+    }
+    return this.addPort(p);
+  }
+
+  addOutPort(label, after = true) {
+    const p = new DefaultPortModel({
+      in: false,
+      name: label,
+      label: label,
+      alignment: PortModelAlignment.RIGHT
+    });
+    if (!after) {
+      this.portsOut.splice(0, 0, p);
+    }
+    return this.addPort(p);
   }
 }
 

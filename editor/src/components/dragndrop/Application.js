@@ -29,15 +29,17 @@ export class Application {
     let port2 = node2.addInPort("In");
     node2.setPosition(400, 100);
 
-    const node3 = new IIPCustomNodeModel({
-      name: "core/iip",
-      color: "rgb(0,192,255)"
-    });
+    // const node3 = new IIPCustomNodeModel({
+    //   name: "core/iip",
+    //   color: "rgb(0,192,255)"
+    // });
+
+    // node3.addInPort("In");
 
     // link the ports
     let link1 = port.link(port2);
 
-    this.activeModel.addAll(node1, node2, node3, link1);
+    this.activeModel.addAll(node1, node2, link1);
     this.diagramEngine.setModel(this.activeModel);
   }
 

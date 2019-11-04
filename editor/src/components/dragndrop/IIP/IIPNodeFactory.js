@@ -5,7 +5,7 @@ import { AbstractReactFactory } from "@projectstorm/react-canvas-core";
 
 export class IIPCustomNodeFactory extends AbstractReactFactory {
   constructor() {
-    super("js-custom-node");
+    super("core/iip");
   }
 
   generateModel(event) {

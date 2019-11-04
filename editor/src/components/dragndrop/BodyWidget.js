@@ -51,6 +51,7 @@ const ProcessJson = array => {
 };
 
 const JsonToFBP = model => {
+  console.log("Library: ", model);
   var processesObj = {};
   var connectionsObj = [];
   var ports = {};
@@ -65,7 +66,7 @@ const JsonToFBP = model => {
             ports[item.id] = item;
           });
           processes[val.id] = val;
-          if (val.name !== "core/iip") {
+          if (val.type !== "core/iip") {
             processesObj[val.id] = { component: val.name };
           }
         }
@@ -79,7 +80,7 @@ const JsonToFBP = model => {
         if (item.models.hasOwnProperty(key)) {
           var val = item.models[key];
           let tgt;
-          if (processes[val.source].name !== "core/iip") {
+          if (processes[val.source].type !== "core/iip") {
             var src = {
               process: val.source,
               port: ports[val.sourcePort].label
@@ -89,8 +90,8 @@ const JsonToFBP = model => {
               port: ports[val.targetPort].label
             };
             connectionsObj.push({ src: src, tgt: tgt });
-          } else if (processes[val.source].name === "core/iip") {
-            var data = { packet: "2s" };
+          } else if (processes[val.source].type === "core/iip") {
+            var data = processes[val.source].data;
             tgt = {
               process: val.target,
               port: ports[val.targetPort].label
@@ -113,7 +114,11 @@ const JsonToFBP = model => {
 const GenerateNode = data => {
   var node = null;
   if (data.name === "core/iip") {
-    node = new IIPCustomNodeModel(data.name, "rgb(192,0,0)");
+    node = new IIPCustomNodeModel({
+      name: "core/iip",
+      color: "rgb(0,192,255)",
+      data: "4s"
+    });
     node.addOutPort("out");
   } else {
     node = new DefaultNodeModel(data.name, "rgb(192,255,0)");
