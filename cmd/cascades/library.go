@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/codegangsta/cli"
 	"github.com/sibeshkar/maya-engine/graph"
 	"github.com/sibeshkar/maya-engine/library"
+	cli "gopkg.in/urfave/cli.v1"
 )
 
 // Print catalog command

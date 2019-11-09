@@ -7,10 +7,10 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/codegangsta/cli"
 	zmq "github.com/pebbe/zmq4"
 	"github.com/sibeshkar/maya-engine/library"
 	"github.com/sibeshkar/maya-engine/runtime"
+	cli "gopkg.in/urfave/cli.v1"
 )
 
 func run(c *cli.Context) {
