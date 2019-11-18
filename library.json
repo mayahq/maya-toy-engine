@@ -4,7 +4,7 @@
       "core/console": {
          "name": "core/console",
          "description": "Simple logging component that writes everything received on the input port to standard output stream.",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/console",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/console",
          "elementary": true,
          "inports": [
             {
@@ -17,10 +17,88 @@
          ],
          "outports": []
       },
+      "core/delay": {
+         "name": "core/delay",
+         "description": "Forwards received IP to the output with a specified delay",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/delay",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "interval",
+               "type": "duration",
+               "description": "Configures the delay. Accepts durations in the format: 3s, 10m, etc",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port for sending IPs",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "core/distinct": {
+         "name": "core/distinct",
+         "description": "A filter component (either file-based or memory-based) that passes through only unique IPs (keeps a complete history of IPs)",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/distinct",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "options",
+               "type": "json",
+               "description": "Port for options to configure the component. E.g. {'storage':'file or memory', 'file':'/path/to/cache/file'}",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "in",
+               "type": "string",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "string",
+               "description": "Output port for sending distinct IPs",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "core/drop": {
+         "name": "core/drop",
+         "description": "Packets dropper. Simply consumes IPs from the input port and 'deletes' them.",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/drop",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for IP",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": []
+      },
       "core/exec": {
          "name": "core/exec",
          "description": "Execute a given command",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/exec",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/exec",
          "elementary": true,
          "inports": [
             {
@@ -48,10 +126,34 @@
             }
          ]
       },
+      "core/joiner": {
+         "name": "core/joiner",
+         "description": "Merges IPs from input array port into a single stream in the natural order of IPs arrival",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/joiner",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input array port",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port with merged stream of IPs from input array",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
       "core/passthru": {
          "name": "core/passthru",
          "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/passthru",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/passthru",
          "elementary": true,
          "inports": [
             {
@@ -72,10 +174,41 @@
             }
          ]
       },
+      "core/readfile": {
+         "name": "core/readfile",
+         "description": "Reads a given file from the local file system line by line and emits each line into the output port.\nThe output data is sent as substream with open bracket IP in the beginning and close bracket IP at the end of the stream for each file.",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/readfile",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "file",
+               "type": "string",
+               "description": "Port for setting file path to be read from",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port for sending IPs",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "err",
+               "type": "string",
+               "description": "Error port for errors opening/reading file",
+               "required": false,
+               "addressable": false
+            }
+         ]
+      },
       "core/splitter": {
          "name": "core/splitter",
          "description": "Copies received IP and sends a copy to each connected out port",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/splitter",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/splitter",
          "elementary": true,
          "inports": [
             {
@@ -96,10 +229,41 @@
             }
          ]
       },
+      "core/submatch": {
+         "name": "core/submatch",
+         "description": "Uses a given RegEx with named capturing groups for analyzing an input string. Outputs the matched map in JSON",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/submatch",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "pattern",
+               "type": "string",
+               "description": "Port for RegExp patte with named capturing groups",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "in",
+               "type": "string",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "map",
+               "type": "json",
+               "description": "Output port for captured submatching map in JSON",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
       "core/switch": {
          "name": "core/switch",
          "description": "Receives IP on the IN port and passes it to OUT only when GATE port receives an IP",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/switch",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/switch",
          "elementary": true,
          "inports": [
             {
@@ -127,10 +291,41 @@
             }
          ]
       },
+      "core/template": {
+         "name": "core/template",
+         "description": "Fill the template string with received data from the input port and pass it to the output port",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/template",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "tpl",
+               "type": "string",
+               "description": "Port for configuring component with a template",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "in",
+               "type": "all",
+               "description": "Input port for receiving IPs",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "all",
+               "description": "Output port for sending IPs",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
       "core/ticker": {
          "name": "core/ticker",
          "description": "Sends ticks (current unix timestamps) at predefined intervals to the output channel",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/ticker",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/core/ticker",
          "elementary": true,
          "inports": [
             {
@@ -151,48 +346,10 @@
             }
          ]
       },
-      "http/client": {
-         "name": "http/client",
-         "description": "Multi-purpose HTTP client component",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/http/client",
-         "elementary": true,
-         "inports": [
-            {
-               "name": "req",
-               "type": "json",
-               "description": "JSON object describing the HTTP request",
-               "required": true,
-               "addressable": false
-            }
-         ],
-         "outports": [
-            {
-               "name": "resp",
-               "type": "json",
-               "description": "Response JSON object defined in utils of HTTP components library",
-               "required": false,
-               "addressable": false
-            },
-            {
-               "name": "body",
-               "type": "string",
-               "description": "Body of the response",
-               "required": false,
-               "addressable": false
-            },
-            {
-               "name": "err",
-               "type": "string",
-               "description": "Error port for errors while performing requests",
-               "required": false,
-               "addressable": false
-            }
-         ]
-      },
-      "js/passthru": {
-         "name": "js/passthru",
-         "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/js/passthru",
+      "debug/crasher": {
+         "name": "debug/crasher",
+         "description": "Based on pasthru component (forwarder), but exits in a couple of seconds after the start with exit code 0",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/debug/crasher",
          "elementary": true,
          "inports": [
             {
@@ -209,6 +366,37 @@
                "type": "all",
                "description": "Output port for sending IPs",
                "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "fs/walk": {
+         "name": "fs/walk",
+         "description": "Recursively walks a given directory and sends filepaths into the output port (only files, directories are omitted)",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/fs/walk",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "dir",
+               "type": "string",
+               "description": "Directory on the file system to walk",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "file",
+               "type": "string",
+               "description": "...",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "err",
+               "type": "string",
+               "description": "Error port for errors walking directory",
+               "required": false,
                "addressable": false
             }
          ]
@@ -216,7 +404,7 @@
       "maya/click": {
          "name": "maya/click",
          "description": "Custom Maya component for clicking selector on the screen",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/maya/click",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/maya/click",
          "elementary": true,
          "inports": [
             {
@@ -237,16 +425,86 @@
             }
          ]
       },
-      "python/passthru": {
-         "name": "python/passthru",
-         "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/python/passthru",
+      "webosocket/client/ws_client": {
+         "name": "webosocket/client/ws_client",
+         "description": "Configures a Websocket client to connect to a given server, forward incoming data to server, output receive server data to output port",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/webosocket/client/ws_client",
          "elementary": true,
          "inports": [
             {
+               "name": "options",
+               "type": "string",
+               "description": "Configures the Websocket server to connect to (i.e. ws://localhost:5000/ws)",
+               "required": true,
+               "addressable": false
+            },
+            {
                "name": "in",
-               "type": "all",
-               "description": "Input port for receiving IPs",
+               "type": "json",
+               "description": "Input port for receiving IPs and forwarding them to server connection",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "json",
+               "description": "Output port for sending IPs with data received from a server",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "webosocket/server/ws_server": {
+         "name": "webosocket/server/ws_server",
+         "description": "Creates a Websocket server and binds to an address/port received from options",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/webosocket/server/ws_server",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "options",
+               "type": "string",
+               "description": "Configures the Websocket server with address to bind to (i.e. 0.0.0.0:5000)",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "in",
+               "type": "json",
+               "description": "Input port for receiving IPs and forwarding them to the corresponding connection",
+               "required": true,
+               "addressable": false
+            }
+         ],
+         "outports": [
+            {
+               "name": "out",
+               "type": "json",
+               "description": "Output port for sending IPs with data received from a specific connection",
+               "required": true,
+               "addressable": false
+            }
+         ]
+      },
+      "pythonscript":{
+
+         "name": "pythonscript",
+         "description": "Gets a python scripts as string multipart and executes it as python binary",
+         "exec": "/home/shubham/go/src/github.com/sibeshkar/maya-engine/components_built/maya/pythonscript",
+         "elementary": true,
+         "inports": [
+            {
+               "name": "script",
+               "type": "string",
+               "description": "The python script to be executed",
+               "required": true,
+               "addressable": false
+            },
+            {
+               "name": "script",
+               "type": "string",
+               "description": "The python script to be executed",
                "required": true,
                "addressable": false
             }
@@ -255,13 +513,14 @@
             {
                "name": "out",
                "type": "all",
-               "description": "Output port for sending IPs",
+               "description": "Output return of inputs to function entered",
                "required": true,
                "addressable": false
             }
          ]
+
       }
    },
-   "created": "2019-10-31T22:58:44.101091+05:30",
-   "updated": "2019-11-01T16:40:51.5594+05:30"
+   "created": "2019-11-16T17:06:09.8404587+05:30",
+   "updated": "2019-11-16T17:06:09.924943127+05:30"
 }
