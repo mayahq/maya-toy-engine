@@ -1,21 +1,16 @@
 import React from "react";
 import EditorDemo from "./components/dragndrop/index";
-
-import { theme, ThemeProvider } from "@chakra-ui/core";
-
+import customTheme from "./theme";
+import { ThemeProvider } from "@chakra-ui/core";
 import "./App.css";
-// Let's say you want to add custom colors
-const customTheme = {
-  ...theme,
-  colors: {
-    ...theme.colors,
-    brand: {
-      900: "#1a365d",
-      800: "#153e75",
-      700: "#2a69ac"
-    }
+
+import WebFont from "webfontloader";
+
+WebFont.load({
+  google: {
+    families: ["Lato:300,400,700,900", "sans-serif"]
   }
-};
+});
 
 function App() {
   return (

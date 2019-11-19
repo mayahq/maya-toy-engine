@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   height: 100%;
-  background-color: rgb(60, 60, 60) !important;
-  background-size: 50px 50px;
+  background-color: #fcfcfc;
+  background-size: 40px 40px;
   display: flex;
   height: 100vh;
   > * {
@@ -43,7 +43,7 @@ export class DemoCanvasWidget extends React.Component {
     return (
       <Container
         background={this.props.background || "rgb(60, 60, 60)"}
-        color={this.props.color || "rgba(255,255,255, 0.05)"}
+        color={this.props.color || "#E2E2E2"}
       >
         {this.props.children}
       </Container>
