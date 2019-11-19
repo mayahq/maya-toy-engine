@@ -18,7 +18,6 @@ export const Tray = styled.div`
   margin-top: 0.5rem;
   background: "#FFFFFF";
   border-bottom: solid 1px #e6e5e5;
-
   flex-grow: 0;
   flex-shrink: 0;
 `;
@@ -30,19 +29,33 @@ export const FlowTabs = () => {
       <Tab
         ref={ref}
         isSelected={props.isSelected}
-        bg={props.isSelected ? "#FCFCFC" : null}
-        marginX="0.2rem"
-        padding="0.2rem 1rem"
-        height="1.6rem"
+        padding="none"
+        background="none"
         _focus={{ outline: "none" }}
         fontFamily="body"
         fontSize="0.7rem"
+        border="none"
         color="maya_dark.500"
         // borderTop={props.isSelected ? "solid 1px #e6e5e5" : "white"}
-        borderBottom={props.isSelected ? null : "solid 1px #e6e5e5"}
+        //borderBottom={props.isSelected ? null : "solid 1px #e6e5e5"}
         {...props}
       >
-        {props.children}
+        <Box
+          zIndex="2"
+          width="100%"
+          paddingX="1rem"
+          paddingTop="0.3rem"
+          paddingBottom="0.3rem"
+          marginBottom="-0.1rem"
+          color="maya_dark.500"
+          bg={props.isSelected ? "#FCFCFC" : null}
+          borderRadius="0.2rem 0.2rem 0 0"
+          borderTop={props.isSelected ? "solid 1px #e6e5e5" : null}
+          borderLeft={props.isSelected ? "solid 1px #e6e5e5" : null}
+          borderRight={props.isSelected ? "solid 1px #e6e5e5" : null}
+        >
+          {props.children}
+        </Box>
       </Tab>
     );
   });
