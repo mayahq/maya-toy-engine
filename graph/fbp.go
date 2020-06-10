@@ -1,7 +1,7 @@
 package graph
 
 import (
-	"github.com/sibeshkar/maya-toy-engine/fbp"
+	"github.com/mayahq/maya-toy-engine/fbp"
 )
 
 // ParseFBP parses a given definition in NoFlo's .fbp DSL and returns

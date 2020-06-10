@@ -3,7 +3,7 @@ package utils
 import (
 	"encoding/json"
 
-	"github.com/sibeshkar/maya-toy-engine/runtime"
+	"github.com/mayahq/maya-toy-engine/runtime"
 )
 
 // Message encapsulates connection ID it received from or to be sent to

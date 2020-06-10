@@ -1,6 +1,6 @@
 package main
 
-import "github.com/sibeshkar/maya-toy-engine/library"
+import "github.com/mayahq/maya-toy-engine/library"
 
 var registryEntry = &library.Entry{
 	Description: `Matches a URI and method from incoming JSON requests from http/server and forwards it either

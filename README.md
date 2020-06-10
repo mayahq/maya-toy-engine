@@ -15,7 +15,7 @@ Cascades is language-agnostic [dataflow](http://en.wikipedia.org/wiki/Dataflow_p
  * The core components are also written in Go, but you are free to choose any programming language of your choice as long as there are bindings for it (currently it supports: C, C++, C#, CL, Delphi, Erlang, F#, Felix, Haskell, Java, Objective-C, PHP, Python, Lua, Ruby, Ada, Basic, Clojure, Go, Haxe, Node.js, ooc, Perl, and Scala)
  * Supports flows defined using NoFlo's [JSON](http://noflojs.org/documentation/json/) format or FBP [DSL](http://noflojs.org/documentation/fbp/) language.
 
-Visit our [Wiki](https://github.com/sibeshkar/maya-toy-engine/wiki) for details on how to get started.
+Visit our [Wiki](https://github.com/mayahq/maya-toy-engine/wiki) for details on how to get started.
 
 ## Usage
 
@@ -45,7 +45,7 @@ GLOBAL OPTIONS:
 
 ## Get Dependencies 
 ```
-go get github.com/sibeshkar/maya-toy-engine/cmd/cascades
+go get github.com/mayahq/maya-toy-engine/cmd/cascades
 
 ```
 

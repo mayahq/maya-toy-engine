@@ -5,7 +5,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sibeshkar/maya-toy-engine/log"
+	"github.com/mayahq/maya-toy-engine/log"
 )
 
 //

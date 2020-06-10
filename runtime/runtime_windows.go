@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sibeshkar/maya-toy-engine/log"
+	"github.com/mayahq/maya-toy-engine/log"
 )
 
 //

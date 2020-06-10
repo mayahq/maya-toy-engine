@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/sibeshkar/maya-toy-engine/runtime"
+	"github.com/mayahq/maya-toy-engine/runtime"
 )
 
 // HTTPClientOptions describe options IP for client configuration

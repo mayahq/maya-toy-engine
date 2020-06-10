@@ -11,7 +11,7 @@ import (
 	"time"
 
 	zmq "github.com/pebbe/zmq4"
-	"github.com/sibeshkar/maya-toy-engine/components/utils"
+	"github.com/mayahq/maya-toy-engine/components/utils"
 )
 
 var (

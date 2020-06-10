@@ -13,8 +13,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/sibeshkar/maya-toy-engine/components/utils"
-	"github.com/sibeshkar/maya-toy-engine/runtime"
+	"github.com/mayahq/maya-toy-engine/components/utils"
+	"github.com/mayahq/maya-toy-engine/runtime"
 	zmq "github.com/pebbe/zmq4"
 )
 
