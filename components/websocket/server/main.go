@@ -12,8 +12,8 @@ import (
 	"time"
 
 	wsutils "github.com/cascades-fbp/cascades-websocket/utils"
-	"github.com/sibeshkar/maya-engine/components/utils"
-	"github.com/sibeshkar/maya-engine/runtime"
+	"github.com/sibeshkar/maya-toy-engine/components/utils"
+	"github.com/sibeshkar/maya-toy-engine/runtime"
 	zmq "github.com/pebbe/zmq4"
 	"golang.org/x/net/websocket"
 )

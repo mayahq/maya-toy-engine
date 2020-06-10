@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/sibeshkar/maya-engine/graph"
+	"github.com/sibeshkar/maya-toy-engine/graph"
 )
 
 func loadGraph(graphfile string) (g *graph.Description, err error) {

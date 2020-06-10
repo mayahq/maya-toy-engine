@@ -13,8 +13,8 @@ import (
 
 	zmq "github.com/alecthomas/gozmq"
 	httputils "github.com/cascades-fbp/cascades-http/utils"
-	"github.com/sibeshkar/maya-engine/components/utils"
-	"github.com/sibeshkar/maya-engine/runtime"
+	"github.com/sibeshkar/maya-toy-engine/components/utils"
+	"github.com/sibeshkar/maya-toy-engine/runtime"
 )
 
 var (

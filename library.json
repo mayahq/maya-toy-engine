@@ -4,7 +4,7 @@
       "core/console": {
          "name": "core/console",
          "description": "Simple logging component that writes everything received on the input port to standard output stream.",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/console",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/console",
          "elementary": true,
          "inports": [
             {
@@ -20,7 +20,7 @@
       "core/exec": {
          "name": "core/exec",
          "description": "Execute a given command",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/exec",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/exec",
          "elementary": true,
          "inports": [
             {
@@ -51,7 +51,7 @@
       "core/passthru": {
          "name": "core/passthru",
          "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/passthru",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/passthru",
          "elementary": true,
          "inports": [
             {
@@ -75,7 +75,7 @@
       "core/splitter": {
          "name": "core/splitter",
          "description": "Copies received IP and sends a copy to each connected out port",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/splitter",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/splitter",
          "elementary": true,
          "inports": [
             {
@@ -99,7 +99,7 @@
       "core/switch": {
          "name": "core/switch",
          "description": "Receives IP on the IN port and passes it to OUT only when GATE port receives an IP",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/switch",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/switch",
          "elementary": true,
          "inports": [
             {
@@ -130,7 +130,7 @@
       "core/ticker": {
          "name": "core/ticker",
          "description": "Sends ticks (current unix timestamps) at predefined intervals to the output channel",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/core/ticker",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/core/ticker",
          "elementary": true,
          "inports": [
             {
@@ -154,7 +154,7 @@
       "http/client": {
          "name": "http/client",
          "description": "Multi-purpose HTTP client component",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/http/client",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/http/client",
          "elementary": true,
          "inports": [
             {
@@ -189,58 +189,10 @@
             }
          ]
       },
-      "js/passthru": {
-         "name": "js/passthru",
-         "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/js/passthru",
-         "elementary": true,
-         "inports": [
-            {
-               "name": "in",
-               "type": "all",
-               "description": "Input port for receiving IPs",
-               "required": true,
-               "addressable": false
-            }
-         ],
-         "outports": [
-            {
-               "name": "out",
-               "type": "all",
-               "description": "Output port for sending IPs",
-               "required": true,
-               "addressable": false
-            }
-         ]
-      },
       "maya/click": {
          "name": "maya/click",
          "description": "Custom Maya component for clicking selector on the screen",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/maya/click",
-         "elementary": true,
-         "inports": [
-            {
-               "name": "in",
-               "type": "all",
-               "description": "Input port for receiving IPs",
-               "required": true,
-               "addressable": false
-            }
-         ],
-         "outports": [
-            {
-               "name": "out",
-               "type": "all",
-               "description": "Output port for sending IPs",
-               "required": true,
-               "addressable": false
-            }
-         ]
-      },
-      "python/passthru": {
-         "name": "python/passthru",
-         "description": "Forwards received IP to the output without any modifications",
-         "exec": "/Users/sibeshkar/go/src/github.com/sibeshkar/maya-engine/components_built/python/passthru",
+         "exec": "/home/sibesh/go/src/github.com/sibeshkar/maya-toy-engine/components_built/maya/click",
          "elementary": true,
          "inports": [
             {
@@ -262,6 +214,6 @@
          ]
       }
    },
-   "created": "2019-10-31T22:58:44.101091+05:30",
-   "updated": "2019-11-01T16:40:51.5594+05:30"
+   "created": "2020-06-10T16:33:49.785242933+05:30",
+   "updated": "2020-06-10T16:56:42.356009503+05:30"
 }

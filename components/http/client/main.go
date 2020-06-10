@@ -14,10 +14,11 @@ import (
 	"syscall"
 	"time"
 
-	httputils "github.com/cascades-fbp/cascades-http/utils"
+	httputils "github.com/sibeshkar/maya-toy-engine/components/http/utils"
 	zmq "github.com/pebbe/zmq4"
-	"github.com/sibeshkar/maya-engine/components/utils"
-	"github.com/sibeshkar/maya-engine/runtime"
+	"github.com/sibeshkar/maya-toy-engine/components/utils"
+	"github.com/sibeshkar/maya-toy-engine/runtime"
+	
 )
 
 var (

@@ -1,3 +1,5 @@
+This is basic editor to wire Maya Toy Engine components together. Not actively maintained.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

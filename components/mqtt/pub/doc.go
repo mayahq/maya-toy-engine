@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/sibeshkar/maya-engine/library"
+	"github.com/sibeshkar/maya-toy-engine/library"
 )
 
 var registryEntry = &library.Entry{

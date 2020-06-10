@@ -1,6 +1,6 @@
 package main
 
-import "github.com/sibeshkar/maya-engine/library"
+import "github.com/sibeshkar/maya-toy-engine/library"
 
 var registryEntry = &library.Entry{
 	Description: "Create a HTTP server and binds to an address/port received from options",
